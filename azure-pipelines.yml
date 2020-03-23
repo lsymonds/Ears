@@ -1,0 +1,16 @@
+trigger:
+  branches:
+    include:
+      - '*'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+  - script: dotnet build Moogie.Events.sln --configuration $(buildConfiguration)
+    displayName: 'dotnet build $(buildConfiguration)'
+  - script: dotnet test test/Moogie.Events.Tests/Moogie.Events.Tests.csproj
+    displayName: 'dotnet test test/Moogie.Events.Tests/Moogie.Events.Tests.csproj'
