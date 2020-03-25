@@ -35,7 +35,7 @@ namespace Moogie.Events
         /// <param name="dispatchable">The type of the dispatchable event to register the listener against.</param>
         /// <param name="listener">The listener to register.</param>
         void RegisterListener(Type dispatchable, Type listener)
-            => RegisterListeners(dispatchable, new[] {listener});
+            => RegisterListeners(dispatchable, listener);
 
         /// <summary>
         /// Registers multiple listeners for a dispatchable event.
