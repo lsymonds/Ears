@@ -71,10 +71,10 @@ namespace Moogie.Events
             }
 
             if (_eventManagerOptions.ParalleliseHandleCalls)
-                await Task.WhenAll(handlers);
+                await Task.WhenAll(handlers).ConfigureAwait(false);
             else
                 foreach (var handler in handlers)
-                    await handler;
+                    await handler.ConfigureAwait(false);
         }
     }
 }
