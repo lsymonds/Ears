@@ -42,6 +42,9 @@ namespace Moogie.Events
         }
 
         /// <inheritdoc />
+        public void RegisterListener(Type dispatchable, Type listener) => RegisterListeners(dispatchable, listener);
+
+        /// <inheritdoc />
         public void RegisterListeners(Type dispatchable, params Type[] listeners)
         {
             if (!_eventListeners.ContainsKey(dispatchable))
@@ -50,6 +53,10 @@ namespace Moogie.Events
             foreach (var listener in listeners.Except(_eventListeners[dispatchable]))
                 _eventListeners[dispatchable].Add(listener);
         }
+
+        /// <inheritdoc />
+        public Task Dispatch<TDispatchable>(TDispatchable dispatchable) where TDispatchable : IDispatchable
+            => Dispatch(new[] {dispatchable});
 
         /// <inheritdoc />
         public async Task Dispatch<TDispatchable>(params TDispatchable[] dispatchables)

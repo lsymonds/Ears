@@ -22,6 +22,6 @@ namespace Moogie.Events
         /// Gets or sets the assemblies to search when adding listeners automatically but also when adding listeners
         /// to the IoC container.
         /// </summary>
-        public List<Assembly>? AssembliesToSearch { get; set; } = new List<Assembly> {Assembly.GetCallingAssembly()};
+        public List<Assembly> AssembliesToSearch { get; set; } = new List<Assembly> {Assembly.GetCallingAssembly()};
     }
 }

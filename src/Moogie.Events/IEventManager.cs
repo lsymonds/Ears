@@ -16,8 +16,7 @@ namespace Moogie.Events
         /// The type of the dispatchable event. Must implement the <see cref="IDispatchable"/> interface.
         /// </typeparam>
         /// <returns>An awaitable task.</returns>
-        Task Dispatch<TDispatchable>(TDispatchable dispatchable) where TDispatchable : IDispatchable
-            => Dispatch(new[] {dispatchable});
+        Task Dispatch<TDispatchable>(TDispatchable dispatchable) where TDispatchable : IDispatchable;
 
         /// <summary>
         /// Dispatches multiple dispatchable events.
@@ -34,8 +33,7 @@ namespace Moogie.Events
         /// </summary>
         /// <param name="dispatchable">The type of the dispatchable event to register the listener against.</param>
         /// <param name="listener">The listener to register.</param>
-        void RegisterListener(Type dispatchable, Type listener)
-            => RegisterListeners(dispatchable, listener);
+        void RegisterListener(Type dispatchable, Type listener);
 
         /// <summary>
         /// Registers multiple listeners for a dispatchable event.

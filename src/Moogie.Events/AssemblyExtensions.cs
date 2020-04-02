@@ -10,7 +10,7 @@ namespace Moogie.Events
         internal static IEnumerable<(Type listener, Type ofEvent)> GetDispatchersAndListeners(
             this IEnumerable<Assembly> assemblies)
         {
-            static bool FilterInterfaces(Type type) =>
+            bool FilterInterfaces(Type type) =>
                 type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IEventListener<>);
 
             foreach (var assembly in assemblies)
