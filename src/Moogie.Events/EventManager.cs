@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 [assembly:InternalsVisibleTo("Moogie.Events.Tests")]
@@ -55,11 +56,17 @@ namespace Moogie.Events
         }
 
         /// <inheritdoc />
-        public Task Dispatch<TDispatchable>(TDispatchable dispatchable) where TDispatchable : IDispatchable
-            => Dispatch(new[] {dispatchable});
+        public Task Dispatch<TDispatchable>(TDispatchable dispatchable, CancellationToken token = default)
+            where TDispatchable : IDispatchable => 
+            Dispatch(token, dispatchable);
 
         /// <inheritdoc />
         public async Task Dispatch<TDispatchable>(params TDispatchable[] dispatchables)
+            where TDispatchable : IDispatchable =>
+            Dispatch(CancellationToken.None, dispatchables);
+
+        /// <inheritdoc />
+        public async Task Dispatch<TDispatchable>(CancellationToken token, params TDispatchable[] dispatchables)
             where TDispatchable : IDispatchable
         {
             var handlers = new List<Task>();
@@ -73,7 +80,7 @@ namespace Moogie.Events
                 foreach (var listener in appropriateListeners)
                 {
                     var listenerInstance = (IEventListener<TDispatchable>) _serviceProvider.GetService(listener);
-                    handlers.Add(listenerInstance.Handle(dispatchable));
+                    handlers.Add(listenerInstance.Handle(dispatchable, token));
                 }
             }
 

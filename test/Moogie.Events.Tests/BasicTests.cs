@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
@@ -18,7 +19,7 @@ namespace Moogie.Events.Tests
 
             protected BaseListener(Testor testor) => Testor = testor;
 
-            public Task Handle(Event dispatchedEvent)
+            public Task Handle(Event dispatchedEvent, CancellationToken token = default)
             {
                 Testor.Messages.Add(dispatchedEvent.Message);
                 return Task.CompletedTask;
