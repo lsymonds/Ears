@@ -61,7 +61,7 @@ namespace Moogie.Events
             Dispatch(token, dispatchable);
 
         /// <inheritdoc />
-        public async Task Dispatch<TDispatchable>(params TDispatchable[] dispatchables)
+        public Task Dispatch<TDispatchable>(params TDispatchable[] dispatchables)
             where TDispatchable : IDispatchable =>
             Dispatch(CancellationToken.None, dispatchables);
 
