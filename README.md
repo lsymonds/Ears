@@ -33,12 +33,12 @@ be used to create a logger instance which will log to whatever providers you hav
 The `ILoggerFactory` can also be mapped automatically when registering `Moogie.Events` with your service collection by 
 passing `true` as the second parameter to the `AddMoogieEvents` method.
 
-### Creating Events and Listeners
+## Creating Events and Listeners
 
 You can create events and listeners by implementing the `IDispatchable` and `IEventListener<? implements IDispatchable>`
 interfaces respectively.
 
-### Dispatching Events
+## Dispatching Events
 
 You can dispatch events by injecting the `IEventManager` interface as a dependency into your class(es) and calling the 
 `Dispatch` method on that dependency with the events you wish to dispatch.
