@@ -1,9 +1,5 @@
 # Moogie.Events
 
-> Simple observer pattern implementation of events and listeners
-
-## Introduction
-
 Moogie.Events is a simple observer pattern implementation of events and listeners. It is designed to help you decouple
 key parts of your application without ever getting in your way.
 
@@ -26,6 +22,17 @@ services.AddMoogieEvents(new EventManagerOptions
 });
 ```
 
+`Moogie.Events` uses your dependency injection container as a factory to instantiate your event listeners on demand.
+Issue #8 is open for people to vote on and contribute to if there is a requirement to remove this dependency.
+
+## Getting logs from Moogie.Events
+
+`Moogie.Events` allows you to specify an `ILoggerFactory` within the `EventManagerOptions` class which will then
+be used to create a logger instance which will log to whatever providers you have configured. 
+
+The `ILoggerFactory` can also be mapped automatically when registering `Moogie.Events` with your service collection by 
+passing `true` as the second parameter to the `AddMoogieEvents` method.
+
 ### Creating Events and Listeners
 
 You can create events and listeners by implementing the `IDispatchable` and `IEventListener<? implements IDispatchable>`
@@ -44,13 +51,13 @@ public class AccountService
        
     public AccountService(IEventManager eventManager) => _eventManager = eventManager;
     
-    public async Task MakeWithdrawal(decimal amount)
+    public async Task MakeWithdrawal(decimal amount, CancellationToken token)
     {
         _balance -= amount;
         await _eventManager.Dispatch(new WithdrawalMade
         {
             Amount = amount
-        });
+        }, token);
     }
 }
 ```

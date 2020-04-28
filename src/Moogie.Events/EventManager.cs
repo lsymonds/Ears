@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 [assembly:InternalsVisibleTo("Moogie.Events.Tests")]
 namespace Moogie.Events
@@ -16,6 +17,7 @@ namespace Moogie.Events
     {
         private readonly EventManagerOptions _eventManagerOptions;
         private readonly IServiceProvider _serviceProvider;
+        private readonly ILogger<EventManager> _logger;
 
         private readonly ConcurrentDictionary<Type, List<Type>> _eventListeners =
             new ConcurrentDictionary<Type, List<Type>>();
@@ -40,6 +42,9 @@ namespace Moogie.Events
                 foreach (var (listener, ofEvent) in listeners)
                     RegisterListeners(ofEvent, listener);
             }
+
+            if (_eventManagerOptions.LoggerFactory != null)
+                _logger = _eventManagerOptions.LoggerFactory.CreateLogger<EventManager>();
         }
 
         /// <inheritdoc />
@@ -52,7 +57,10 @@ namespace Moogie.Events
                 _eventListeners[dispatchable] = new List<Type>();
 
             foreach (var listener in listeners.Except(_eventListeners[dispatchable]))
+            {
+                _logger?.LogInformation($"Adding new listener ({listener}) for event {dispatchable}.");
                 _eventListeners[dispatchable].Add(listener);
+            }
         }
 
         /// <inheritdoc />
@@ -79,6 +87,8 @@ namespace Moogie.Events
                 var appropriateListeners = _eventListeners[dispatchable.GetType()];
                 foreach (var listener in appropriateListeners)
                 {
+                    _logger?.LogInformation("Dispatching event {dispatchable} to listener {listener}.");
+                    
                     var listenerInstance = (IEventListener<TDispatchable>) _serviceProvider.GetService(listener);
                     handlers.Add(listenerInstance.Handle(dispatchable, token));
                 }

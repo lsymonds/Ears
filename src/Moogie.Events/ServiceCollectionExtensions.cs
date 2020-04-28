@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Moogie.Events
 {
@@ -13,12 +14,22 @@ namespace Moogie.Events
         /// </summary>
         /// <param name="serviceCollection">The service collection to add the project to.</param>
         /// <param name="eventManagerOptions">Options to configure the event manager.</param>
+        /// <param name="autoDiscoverLoggingFactory">
+        /// Whether to auto discovery a logging factory from the service container instead of it having to be manually
+        /// specified.
+        /// </param>
         /// <returns>The service collection with Moogie.Events added.</returns>
         public static IServiceCollection AddMoogieEvents(this IServiceCollection serviceCollection,
-            EventManagerOptions eventManagerOptions)
+            EventManagerOptions eventManagerOptions,
+            bool autoDiscoverLoggingFactory = false)
         {
             EventManager BuildEventManager(IServiceProvider serviceProvider)
-                => new EventManager(eventManagerOptions, serviceProvider);
+            {
+                if (autoDiscoverLoggingFactory)
+                    eventManagerOptions.LoggerFactory = serviceProvider.GetService<ILoggerFactory>();
+                
+                return new EventManager(eventManagerOptions, serviceProvider);
+            }
 
             if (eventManagerOptions?.AssembliesToSearch != null)
             {
