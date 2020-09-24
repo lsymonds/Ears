@@ -1,18 +1,18 @@
-# Moogie.Events
+# Ears
 
-Moogie.Events is a simple observer pattern implementation of events and listeners. It is designed to help you decouple
+Ears is a simple observer pattern implementation of events and listeners. It is designed to help you decouple
 key parts of your application without ever getting in your way.
 
 ## Getting Started
 
-Add the `Moogie.Events` package into your project:
+Add the `Ears` package into your project:
 
-`dotnet add package Moogie.Events`
+`dotnet add package Ears`
 
-Then add `Moogie.Events` to your application's service collection in your `Startup.cs` file:
+Then add `Ears` to your application's service collection in your `Startup.cs` file:
 
 ```
-services.AddMoogieEvents(new EventManagerOptions
+services.AddEars(new EventManagerOptions
 {
     AssembliesToSearch = new[]
     {
@@ -22,16 +22,16 @@ services.AddMoogieEvents(new EventManagerOptions
 });
 ```
 
-`Moogie.Events` uses your dependency injection container as a factory to instantiate your event listeners on demand.
+`Ears` uses your dependency injection container as a factory to instantiate your event listeners on demand.
 Issue #8 is open for people to vote on and contribute to if there is a requirement to remove this dependency.
 
-## Getting logs from Moogie.Events
+## Getting logs from Ears
 
-`Moogie.Events` allows you to specify an `ILoggerFactory` within the `EventManagerOptions` class which will then
+`Ears` allows you to specify an `ILoggerFactory` within the `EventManagerOptions` class which will then
 be used to create a logger instance which will log to whatever providers you have configured. 
 
-The `ILoggerFactory` can also be mapped automatically when registering `Moogie.Events` with your service collection by 
-passing `true` as the second parameter to the `AddMoogieEvents` method.
+The `ILoggerFactory` can also be mapped automatically when registering `Ears` with your service collection by 
+passing `true` as the second parameter to the `AddEars` method.
 
 ## Creating Events and Listeners
 

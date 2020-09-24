@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace Moogie.Events.Tests
+namespace Ears.Tests
 {
     public class ValidationTests
     {

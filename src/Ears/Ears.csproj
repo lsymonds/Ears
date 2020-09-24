@@ -5,12 +5,12 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <PackageId>Moogie.Events</PackageId>
-        <PackageTags>observer pattern;observer;moogie;moogie.events;events;listener;listeners;dispatchable;dispatch</PackageTags>
+        <PackageId>Ears</PackageId>
+        <PackageTags>observer pattern;observer;Ears;events;listener;listeners;dispatchable;dispatch</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Authors>l_symonds</Authors>
-        <RepositoryUrl>https://github.com/lsymonds/Moogie.Events</RepositoryUrl>
-        <PackageDescription>Moogie.Events is a simple observer pattern implementation of events and listeners. It is designed to help you decouple key parts of your application without ever getting in your way.</PackageDescription>
+        <RepositoryUrl>https://github.com/lsymonds/Ears</RepositoryUrl>
+        <PackageDescription>Ears is a simple observer pattern implementation of events and listeners. It is designed to help you decouple key parts of your application without ever getting in your way.</PackageDescription>
     </PropertyGroup>
 
     <ItemGroup>

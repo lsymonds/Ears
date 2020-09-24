@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Moogie.Events\Moogie.Events.csproj" />
+    <ProjectReference Include="..\..\src\Ears\Ears.csproj" />
   </ItemGroup>
 
 </Project>

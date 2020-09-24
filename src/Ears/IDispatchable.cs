@@ -1,4 +1,4 @@
-namespace Moogie.Events
+namespace Ears
 {
     /// <summary>
     /// Common interface that marks the implementing type as something that can be dispatched by the event manager

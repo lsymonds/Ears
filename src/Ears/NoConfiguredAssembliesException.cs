@@ -1,6 +1,6 @@
 using System;
 
-namespace Moogie.Events
+namespace Ears
 {
     /// <summary>
     /// Exception that is thrown when no assemblies are configured in the options.

@@ -3,5 +3,5 @@ mono: none
 dotnet: 3.1.2
 
 script:
-- dotnet build Moogie.Events.sln
+- dotnet build Ears.sln
 - dotnet test

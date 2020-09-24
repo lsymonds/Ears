@@ -2,15 +2,15 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Moogie.Events
+namespace Ears
 {
     /// <summary>
-    /// Extension methods to add Moogie.Events to the standard dependency injection framework provided by Microsoft.
+    /// Extension methods to add Ears to the standard dependency injection framework provided by Microsoft.
     /// </summary>
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// Adds Moogie.Events to a specified service collection.
+        /// Adds Ears to a specified service collection.
         /// </summary>
         /// <param name="serviceCollection">The service collection to add the project to.</param>
         /// <param name="eventManagerOptions">Options to configure the event manager.</param>
@@ -18,16 +18,18 @@ namespace Moogie.Events
         /// Whether to auto discovery a logging factory from the service container instead of it having to be manually
         /// specified.
         /// </param>
-        /// <returns>The service collection with Moogie.Events added.</returns>
-        public static IServiceCollection AddMoogieEvents(this IServiceCollection serviceCollection,
+        /// <returns>The service collection with Ears added.</returns>
+        public static IServiceCollection AddEars(
+            this IServiceCollection serviceCollection,
             EventManagerOptions eventManagerOptions,
-            bool autoDiscoverLoggingFactory = false)
+            bool autoDiscoverLoggingFactory = false
+        )
         {
             EventManager BuildEventManager(IServiceProvider serviceProvider)
             {
                 if (autoDiscoverLoggingFactory)
                     eventManagerOptions.LoggerFactory = serviceProvider.GetService<ILoggerFactory>();
-                
+
                 return new EventManager(eventManagerOptions, serviceProvider);
             }
 

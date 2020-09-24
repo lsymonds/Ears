@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
 
-namespace Moogie.Events
+namespace Ears
 {
     /// <summary>
     /// Options used to configure an <see cref="EventManager"/> instance.

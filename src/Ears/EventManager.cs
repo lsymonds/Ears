@@ -7,8 +7,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-[assembly:InternalsVisibleTo("Moogie.Events.Tests")]
-namespace Moogie.Events
+[assembly:InternalsVisibleTo("Ears.Tests")]
+namespace Ears
 {
     /// <summary>
     /// Handles all event associated functionality.

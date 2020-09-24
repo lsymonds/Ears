@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Moogie.Events
+namespace Ears
 {
     /// <summary>
     /// Defines what all asynchronous event listeners must implement.

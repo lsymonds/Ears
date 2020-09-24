@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Moogie.Events.Tests
+namespace Ears.Tests
 {
     public class BasicTests
     {
@@ -49,7 +49,7 @@ namespace Moogie.Events.Tests
             // Arrange.
             var container = new ServiceCollection();
             container.AddSingleton(typeof(Testor), new Testor());
-            container.AddMoogieEvents(new EventManagerOptions { AutoDiscoverListeners = false });
+            container.AddEars(new EventManagerOptions { AutoDiscoverListeners = false });
 
             var provider = container.BuildServiceProvider();
             var testor = provider.GetService<Testor>();
@@ -71,7 +71,7 @@ namespace Moogie.Events.Tests
             // Arrange.
             var container = new ServiceCollection();
             container.AddSingleton(typeof(Testor), new Testor());
-            container.AddMoogieEvents(new EventManagerOptions());
+            container.AddEars(new EventManagerOptions());
 
             var provider = container.BuildServiceProvider();
             var testor = provider.GetService<Testor>();

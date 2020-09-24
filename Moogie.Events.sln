@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9A006379-B090-4084-BD0B-30E22D0C5194}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moogie.Events", "src\Moogie.Events\Moogie.Events.csproj", "{DDCFDC50-386C-444C-ABA9-5E42A0EBEC95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ears", "src\Ears\Ears.csproj", "{DDCFDC50-386C-444C-ABA9-5E42A0EBEC95}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9721C227-BE27-44F3-991D-F6F2F592FCDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moogie.Events.Tests", "test\Moogie.Events.Tests\Moogie.Events.Tests.csproj", "{296FA0B7-F599-426F-ACD1-FA6D1887517E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ears.Tests", "test\Ears.Tests\Ears.Tests.csproj", "{296FA0B7-F599-426F-ACD1-FA6D1887517E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

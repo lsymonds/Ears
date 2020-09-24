@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Moogie.Events
+namespace Ears
 {
     /// <summary>
     /// Defines the behavior that event managers must implement.

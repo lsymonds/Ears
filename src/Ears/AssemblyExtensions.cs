@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Moogie.Events
+namespace Ears
 {
     internal static class AssemblyExtensions
     {
