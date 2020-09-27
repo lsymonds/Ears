@@ -5,8 +5,16 @@ using System.Reflection;
 
 namespace Ears
 {
+    /// <summary>
+    /// Contains a number of extensions relating to assemblies.
+    /// </summary>
     internal static class AssemblyExtensions
     {
+        /// <summary>
+        /// Gets the dispatchers and listeners Ears can use from a collection of source assemblies.
+        /// </summary>
+        /// <param name="assemblies">The assemblies to search through to find events and listeners.</param>
+        /// <returns>An enumerable collection containing a tuple of a listener and the event it listens to.</returns>
         internal static IEnumerable<(Type listener, Type ofEvent)> GetDispatchersAndListeners(
             this IEnumerable<Assembly> assemblies)
         {
